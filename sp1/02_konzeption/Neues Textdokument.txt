@@ -1,0 +1,13 @@
+docker run -d --name con_flight -p 49160:22 -p 8088:8080 -p 1522:1521 araczkowski/oracle-apex-ords
+
+docker pull araczkowski/oracle-apex-ords
+
+/oracle@//localhost:1521/mycdb as sysdba
+/oracle@XE;
+http://165.227.163.140:8088/ords/f?p=4350
+http://165.227.163.140:8088/ords/f?p=4350
+
+docker exec -it 4ca8fbaa0980 /bin/bash
+=allways
+docker start 4ca8fbaa0980
+docker start 3af49fb43bdd
