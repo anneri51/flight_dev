@@ -1,2 +1,4 @@
 select 'select count(*) , ' || chr(39) || table_name || chr(39) || 'from ' || table_name || ' union'
-from user_tables
+from user_tables;
+
+select * from user_tab_cols;
