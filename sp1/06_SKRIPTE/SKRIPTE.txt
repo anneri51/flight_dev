@@ -2,3 +2,23 @@ select 'select count(*) , ' || chr(39) || table_name || chr(39) || 'from ' || ta
 from user_tables;
 
 select * from user_tab_cols;
+
+/*--*/
+
+begin 
+
+   for i in (
+             with d as ( select pk_REL_KONTO_AUSZUG_GIR id, rowid rnr  from "T_REL_KONTO_AUSZUG_GIR") ,
+             d1 as ( select  id, max(rnr) rnr
+                     from d
+                     group by id
+                     having count(*) >1
+       
+                    )
+             select rnr from d1
+            ) loop
+             
+            delete from "T_REL_KONTO_AUSZUG_GIR" where rowid = i.rnr;
+            commit;
+    end loop;
+end;
